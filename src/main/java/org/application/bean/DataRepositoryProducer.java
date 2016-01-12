@@ -35,7 +35,7 @@ public class DataRepositoryProducer {
       properties.put("javax.persistence.jdbc.password", password );
       properties.put("javax.persistence.jdbc.driver", "org.postgresql.Driver");
       properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-      factory Persistence.createEntityManagerFactory("default", properties);
+      factory = Persistence.createEntityManagerFactory("default", properties);
 		}
 		return factory;
 	}
