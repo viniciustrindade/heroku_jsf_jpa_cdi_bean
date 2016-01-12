@@ -14,23 +14,26 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
 public class Resources {
   
-  @Inject
-  EntityManagerFactory emf;
+
 
  /*  @Produces
    @PersistenceContext(unitName="default")
    private EntityManager entityManager;*/
 
 /*   @PersistenceContext(unitName="incorpPU")
-   private EntityManager incorpEntityManager;
-   */
-   @Produces 
-   @ApplicationScoped 
-   EntityManagerFactory createEntityManagerFactory(){
+   private EntityManager incorpEntityManager;*/
 
+   @Produces
+   @ApplicationScoped
+   EntityManager createEntityManager(){
+     return this.createEntityManagerFactory().createEntityManager();
+   }
+
+
+
+   EntityManagerFactory createEntityManagerFactory(){
       String databaseUrl = System.getenv("DATABASE_URL");
       StringTokenizer st = new StringTokenizer(databaseUrl, ":@/");
       String dbVendor = st.nextToken(); //if DATABASE_URL is set
@@ -50,11 +53,6 @@ public class Resources {
 
    }
    
-   @Produces
-   @RequestScoped
-   EntityManager createEntityManager(){
-     return emf.createEntityManager();
-   }
 
    void disposeEntityMaganer(@Disposes EntityManager em){
     em.close();
