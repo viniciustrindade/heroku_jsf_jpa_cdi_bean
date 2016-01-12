@@ -1,6 +1,3 @@
 Manifest-Version: 1.0
-Archiver-Version: Plexus Archiver
-Built-By: vinicius
-Created-By: Apache Maven
-Build-Jdk: 1.8.0_60
+Class-Path: 
 
