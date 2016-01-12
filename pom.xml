@@ -51,6 +51,15 @@
 			<scope>compile</scope>
 		</dependency>
 
+    <!--  EJB-->
+
+    <dependency>
+      <groupId>org.jboss.spec.javax.ejb</groupId>
+      <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+      <scope>provided</scope>
+      <version>1.0.2.Final</version>
+    </dependency>
+
 		<!-- CDI Dependencies -->
 
 		<dependency>
