@@ -19,7 +19,23 @@ public class DataRepositoryProducer {
 	@Produces
 	public EntityManagerFactory getEntityManagerFactory() {
 		if (factory == null) {
-			factory = Persistence.createEntityManagerFactory("pu");
+
+      String databaseUrl = System.getenv("DATABASE_URL");
+      StringTokenizer st = new StringTokenizer(databaseUrl, ":@/");
+      String dbVendor = st.nextToken(); //if DATABASE_URL is set
+      String userName = st.nextToken();
+      String password = st.nextToken();
+      String host = st.nextToken();
+      String port = st.nextToken();
+      String databaseName = st.nextToken();
+      String jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory", host, port, databaseName);
+      Map<String, String> properties = new HashMap<String, String>();
+      properties.put("javax.persistence.jdbc.url", databaseUrl );
+      properties.put("javax.persistence.jdbc.user", userName );
+      properties.put("javax.persistence.jdbc.password", password );
+      properties.put("javax.persistence.jdbc.driver", "org.postgresql.Driver");
+      properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+      factory Persistence.createEntityManagerFactory("default", properties);
 		}
 		return factory;
 	}
