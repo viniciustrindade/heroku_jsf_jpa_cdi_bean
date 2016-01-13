@@ -19,7 +19,7 @@
       <property name="hibernate.jdbc.wrap_result_sets" value="false" />
       <property name="hibernate.hibernate.cache.use_query_cache"
         value="true" />
-      <property name="hibernate.hbm2ddl.auto" value="update" />
+      <property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
 
 

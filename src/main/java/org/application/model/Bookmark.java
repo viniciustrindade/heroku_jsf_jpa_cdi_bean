@@ -53,7 +53,7 @@ public class Bookmark implements Serializable {
 	@NotEmpty
 	private String title;
 
-	@Column(length = 255)
+	@Column(length = 3000)
 	@NotEmpty
 	private String description;
 
